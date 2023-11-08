@@ -1,33 +1,60 @@
-function calcAverageCalories(days) {
-  let averegeCaloris = 0;
-  for (const item of days) {
-    averegeCaloris += item.calories;
-  }
-  console.log(
-    days.length != 0 ? (averegeCaloris = averegeCaloris / days.length) : 0,
+const getUsersWithFriend = (allUsers, friend) =>
+  allUsers.filter(users =>
+    Object.values(users.friends).some(user => user === friend),
   );
-}
-// Такий виклик функції calcAverageCalories повертає 3180
-calcAverageCalories([
-  { day: 'monday', calories: 3010 },
-  { day: 'tuesday', calories: 3200 },
-  { day: 'wednesday', calories: 3120 },
-  { day: 'thursday', calories: 2900 },
-  { day: 'friday', calories: 3450 },
-  { day: 'saturday', calories: 3280 },
-  { day: 'sunday', calories: 3300 },
-]);
+const allUsers = [
+  {
+    name: 'Moore Hensley',
+    friends: ['Sharron Pace'],
+  },
+  {
+    name: 'Sharlene Bush',
+    friends: ['Briana Decker', 'Sharron Pace'],
+  },
+  {
+    name: 'Ross Vazquez',
+    friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+  },
+  {
+    name: 'Elma Head',
+    friends: ['Goldie Gentry', 'Aisha Tran'],
+  },
+  {
+    name: 'Carey Barr',
+    friends: ['Jordan Sampson', 'Eddie Strong'],
+  },
+  {
+    name: 'Blackburn Dotson',
+    friends: ['Jacklyn Lucas', 'Linda Chapman'],
+  },
+  {
+    name: 'Sheree Anthony',
+    friends: ['Goldie Gentry', 'Briana Decker'],
+  },
+];
 
-// Такий виклик функції calcAverageCalories повертає 2270
-calcAverageCalories([
-  { day: 'monday', calories: 2040 },
-  { day: 'tuesday', calories: 2270 },
-  { day: 'wednesday', calories: 2420 },
-  { day: 'thursday', calories: 1900 },
-  { day: 'friday', calories: 2370 },
-  { day: 'saturday', calories: 2280 },
-  { day: 'sunday', calories: 2610 },
-]);
-
-// Такий виклик функції calcAverageCalories повертає 0
-calcAverageCalories([]);
+console.log(getUsersWithFriend(allUsers, 'Briana Decker'));
+// [
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"]
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"]
+//   }
+// ]
+console.log('--------------------------------');
+console.log(getUsersWithFriend(allUsers, 'Goldie Gentry'));
+// [
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"]
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"]
+//   }
+// ]
+console.log('--------------------------------');
+console.log(getUsersWithFriend(allUsers, 'Adrian Cross')); // []
